@@ -1,0 +1,184 @@
+{
+	"info": {
+		"_postman_id": "96f693a4-189e-4c6c-959a-f08596b9dabe",
+		"name": "Nexus Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5525966",
+		"_collection_link": "https://proyectfilas.postman.co/workspace/Team-Workspace~ca285ed3-15b7-4cdc-8426-275a3c99999c/collection/5525966-96f693a4-189e-4c6c-959a-f08596b9dabe?action=share&source=collection_link&creator=5525966"
+	},
+	"item": [
+		{
+			"name": "get brands",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/brands",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"brands"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "save brand",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Toyota\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/brands",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"brands"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "models associated with the brand",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/brands/1/models",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"brands",
+						"1",
+						"models"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create a model associated with a brand",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"test \",\r\n  \"average_price\": 250000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/brands/1/models",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"brands",
+						"1",
+						"models"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upgrade price",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"average_price\": 101000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/models/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"models",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get models by price range",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/models?greater=200000&lower=400000",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"models"
+					],
+					"query": [
+						{
+							"key": "greater",
+							"value": "200000"
+						},
+						{
+							"key": "lower",
+							"value": "400000"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://nexus-test.alexis-velasco.website/api",
+			"type": "string"
+		}
+	]
+}
