@@ -177,7 +177,7 @@
 	"variable": [
 		{
 			"key": "base_url",
-			"value": "https://nexus-test.alexis-velasco.website/api",
+			"value": "",
 			"type": "string"
 		}
 	]
