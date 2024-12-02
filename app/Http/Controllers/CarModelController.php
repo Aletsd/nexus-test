@@ -2,25 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Model;
+use App\Models\CarModel;
 use Illuminate\Http\Request;
 
-class ModelController extends Controller
+class CarModelController extends Controller
 {
     public function store(Request $request, $brandId)
     {
         $request->validate([
-            'name' => 'required|unique:models,name,NULL,id,brand_id,' . $brandId,
+            'name' => 'required|unique:car_models,name,NULL,id,brand_id,' . $brandId,
             'average_price' => 'nullable|numeric|min:100000'
         ]);
 
-        $model = Model::create([
+        $CarModel = CarModel::create([
             'name' => $request->name,
             'brand_id' => $brandId,
             'average_price' => $request->average_price
         ]);
 
-        return response()->json($model, 201);
+        return response()->json($CarModel, 201);
     }
 
     public function update(Request $request, $id)
@@ -29,15 +29,16 @@ class ModelController extends Controller
             'average_price' => 'required|numeric|min:100000'
         ]);
 
-        $model = Model::findOrFail($id);
-        $model->update(['average_price' => $request->average_price]);
+        $CarModel = CarModel::findOrFail($id);
+        $CarModel -> average_price = $request->average_price;
+        $CarModel -> save();
 
-        return response()->json($model);
+        return response()->json($CarModel);
     }
 
     public function index(Request $request)
     {
-        $query = Model::query();
+        $query = CarModel::query();
 
         if ($request->has('greater')) {
             $query->where('average_price', '>', $request->greater);
